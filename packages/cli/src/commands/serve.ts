@@ -2,6 +2,8 @@ import path from "path";
 import { Command } from "commander";
 import { serve } from "local-api";
 
+const isProduction = process.env.NODE_ENV === "production";
+
 export const serveCommand = new Command()
   // [filename] is an optional value
   .command("serve [filename]")
@@ -13,8 +15,10 @@ export const serveCommand = new Command()
       // get absolute path of file arg
       const dir = path.join(process.cwd(), path.dirname(filename));
       // calling local-api package
-      await serve(parseInt(options.port), path.basename(filename), dir);
-      console.log(`Opened ${filename}. Navigate to http://localhost:${options.port} to edit the file`);
+      await serve(parseInt(options.port), path.basename(filename), dir, !isProduction);
+      console.log(
+        `Opened ${filename}. Navigate to http://localhost:${options.port} to edit the file`
+      );
     } catch (err) {
       if (err.code === "EADDRINUSE") {
         console.error("Port is in use. Try running on a differernt port");
