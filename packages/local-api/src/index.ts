@@ -27,7 +27,7 @@ export const serve = (
     );
   } else {
     // Prod mode (CLI installed): serve the built files of react app inside node_modules dependency
-    const packagePath = require.resolve("local-client/build/index.html");
+    const packagePath = require.resolve("@jsnote-joe/local-client/build/index.html");
     app.use(express.static(path.dirname(packagePath)));
   }
 

@@ -1,5 +1,5 @@
 {
-  "name": "cli",
+  "name": "jsnote-joe",
   "version": "1.0.0",
   "description": "",
   "scripts": {
@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "commander": "^7.0.0",
-    "local-api": "^1.0.0"
+    "@jsnote-joe/local-api": "^1.0.0"
   },
   "devDependencies": {
     "@types/node": "^14.14.27",
