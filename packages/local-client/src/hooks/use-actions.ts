@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { bindActionCreators } from "redux";
 import { actionCreators } from "../state";
 
-// wrap useDispatch and action creators
+// wrap useDispatch and all action creators
 export const useActions = () => {
   const dispatch = useDispatch();
   // bindActionCreators returns different results everytime, triggering useEffect re-run indefinitely

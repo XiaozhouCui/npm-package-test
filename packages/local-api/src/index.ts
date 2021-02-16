@@ -12,6 +12,10 @@ export const serve = (
   // setup express server
   const app = express();
 
+  // route handlers for req to '/cells'
+  app.use(createCellsRouter(filename, dir));
+
+  // use proxy in dev mode
   if (useProxy) {
     // Dev mode: CRA dev server will also be available at port "http://localhost:4005"
     app.use(
@@ -26,8 +30,6 @@ export const serve = (
     const packagePath = require.resolve("local-client/build/index.html");
     app.use(express.static(path.dirname(packagePath)));
   }
-
-  app.use(createCellsRouter(filename, dir));
 
   return new Promise<void>((resolve, reject) => {
     app.listen(port, resolve).on("error", reject);
